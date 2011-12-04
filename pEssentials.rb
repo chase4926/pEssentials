@@ -22,15 +22,17 @@ class PuruginEssentials
       x = 85 # Setspawn - Later
       y = 66
       z = 248
-      destination = org.bukkit.Location.new(me.world, x, y, z)
+      loc = me.eye_location
+      destination = org.bukkit.Location.new(me.world, x, y, z, loc.yaw, loc.pitch)
       server.scheduler.schedule_sync_delayed_task(self) { me.teleport(destination) }
     end
     
     public_command('tpc', 'teleport_to_xyz', '/tpc {x} {y} {z}') do |me, *args|
-      x = error? args[0].to_i, "Needs x"
-      y = error? args[1].to_i, "Needs y"
-      z = error? args[2].to_i, "Needs z"
-      destination = org.bukkit.Location.new(me.world, x, y, z)
+      x = error? args[0].to_i, 'Needs x'
+      y = error? args[1].to_i, 'Needs y'
+      z = error? args[2].to_i, 'Needs z'
+      loc = me.eye_location
+      destination = org.bukkit.Location.new(me.world, x, y, z, loc.yaw, loc.pitch)
       server.scheduler.schedule_sync_delayed_task(self) { me.teleport(destination) }
     end
     
