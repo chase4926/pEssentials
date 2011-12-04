@@ -1,1 +1,29 @@
-doodoo
+Purugin Essentials Plugin
+Chase Arnold | Thomas Dervan
+
+Teleport-
+  /tpc x y z
+  Teleports the user to the xyz coordinates specified
+  
+  /spawn
+  Teleports the user to spawn
+
+Health-
+  /heal
+  Heals the user fully
+  
+  /feed
+  Feed the user fully
+  
+  /starve
+  Reduces food bar to nothing
+  
+Gamemode-
+  /mode
+  Toggles the users gamemode between survival and creative
+  
+  /survival
+  Sets the users gamemode to survival
+  
+  /creative
+  Sets the users gamemode to creative
