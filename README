@@ -11,6 +11,10 @@ Teleport-
   /setspawn
   Sets the world's spawnpoint
 
+Inventory-
+  /clear
+  Clears the user's inventory
+
 Health-
   /heal
   Heals the user fully
