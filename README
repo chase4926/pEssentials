@@ -10,27 +10,27 @@ Teleport-
   
   /setspawn
   Sets the world's spawnpoint
-
+  
 Inventory-
   /clear
   Clears the user's inventory
-
+  
 Health-
   /heal
   Heals the user fully
   
   /feed
-  Feed the user fully
+  Feeds the user fully
   
   /starve
-  Reduces food bar to nothing
+  Reduces the users food bar to nothing
   
 Gamemode-
   /mode
-  Toggles the users gamemode between survival and creative
+  Toggles the user's gamemode between survival and creative
   
   /survival
-  Sets the users gamemode to survival
+  Sets the user's gamemode to survival
   
   /creative
-  Sets the users gamemode to creative
+  Sets the user's gamemode to creative
