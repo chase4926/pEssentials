@@ -34,3 +34,9 @@ Gamemode-
   
   /creative
   Sets the user's gamemode to creative
+  
+Fake Join/Leave-
+  /join
+  Sends a fake join message to all players
+  /leave
+  Sends a fake leave message to all players

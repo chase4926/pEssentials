@@ -26,6 +26,14 @@ class PuruginEssentials
       me.msg('Inventory cleared.')
     end
     
+    player_command('join', 'Fake join game message', '/join') do |me, *|
+      server.broadcast_message yellow("#{me.display_name} has joined the game")
+    end
+    
+    player_command('leave', 'Fake leave game message', '/leave') do |me, *|
+      server.broadcast_message yellow("#{me.display_name} has left the game")
+    end
+    
     player_command('tpc', 'teleport_to_xyz', '/tpc {x} {y} {z}') do |me, *args|
       x = error? args[0].to_i, 'Needs x'
       y = error? args[1].to_i, 'Needs y'
