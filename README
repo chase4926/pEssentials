@@ -11,6 +11,21 @@ Teleport-
   /setspawn
   Sets the world's spawnpoint
   
+  /warp {warpname} optional={password}
+  Teleports the user to a predefined warp
+  
+  /setwarp {warpname} optional={password}
+  Create a warp named {warpname}
+  
+  /delwarp {warpname} optional={password}
+  Deletes a warp named {warpname}
+  
+  /f_warp {warpname}
+  Forcibly teleports the user to a predefined warp
+  
+  /f_delwarp {warpname}
+  Forcibly deletes a warp named {warpname}
+  
 Inventory-
   /clear
   Clears the user's inventory
