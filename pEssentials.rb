@@ -143,17 +143,17 @@ class PuruginEssentials
     
     player_command('join', 'Fake join game message', '/join {name}') do |me, *args|
       if args[0] != nil then
-        server.broadcast_message yellow("#{args[0]} has joined the game")
+        server.broadcast_message yellow("#{args[0]} joined the game.")
       else
-        server.broadcast_message yellow("#{me.display_name} has joined the game")
+        server.broadcast_message yellow("#{me.display_name} joined the game.")
       end
     end
     
     player_command('leave', 'Fake leave game message', '/leave {name}') do |me, *args|
       if args[0] != nil then
-        server.broadcast_message yellow("#{args[0]} has left the game")
+        server.broadcast_message yellow("#{args[0]} left the game.")
       else
-        server.broadcast_message yellow("#{me.display_name} has left the game")
+        server.broadcast_message yellow("#{me.display_name} left the game.")
       end
     end
     
@@ -190,6 +190,27 @@ class PuruginEssentials
         me.game_mode = org.bukkit.GameMode::SURVIVAL
       else
         me.game_mode = org.bukkit.GameMode::CREATIVE
+      end
+    end
+    
+    event(:player_interact) do |e|
+      me = e.player
+      if e.right_click_block? then
+        block = e.clicked_block
+        if block.is? :sign_post or block.is? :wall_sign then
+          if block.state.get_line(0) == '[warp]' then
+            warp = @warps_hash[block.state.get_line(1).to_s]
+            if warp != nil then
+              player_loc = me.eye_location
+              destination = org.bukkit.Location.new(me.world, warp[:x], warp[:y], warp[:z], player_loc.yaw, player_loc.pitch)
+              server.scheduler.schedule_sync_delayed_task(self) { me.teleport(destination) }
+            else
+              block.state.set_line(0, '[]')
+              block.state.set_line(1, 'Unknown Warp')
+              block.state.update()
+            end
+          end
+        end
       end
     end
   end
