@@ -24,17 +24,17 @@ class PuruginEssentials
   def on_enable
     load_warps()
     
-    public_command('feed', 'Nourishes you fully', '/feed ') do |me, *|
+    public_player_command('feed', 'Nourishes you fully', '/feed ') do |me, *|
       me.msg green('Your stomach has been filled.')
       me.food_level = 30
     end
     
-    public_command('starve', 'Starve yourself!', '/starve') do |me, *|
+    public_player_command('starve', 'Starve yourself!', '/starve') do |me, *|
       me.msg red('You are now starving!')
       me.food_level = 0
     end
     
-    public_command('spawn', 'Teleports you to spawn', '/spawn') do |me, *args|
+    public_player_command('spawn', 'Teleports you to spawn', '/spawn') do |me, *args|
       loc = me.world.get_spawn_location.to_a
       player_loc = me.location
       destination = org.bukkit.Location.new(me.world, loc[0], loc[1], loc[2], player_loc.yaw, player_loc.pitch)
@@ -42,12 +42,12 @@ class PuruginEssentials
       me.msg('You have been teleported to spawn.')
     end
     
-    public_command('clear', 'Clears your inventory', '/clear') do |me, *|
+    public_player_command('clear', 'Clears your inventory', '/clear') do |me, *|
       me.inventory.clear
       me.msg('Inventory cleared.')
     end
     
-    public_command('setwarp', 'Creates a new warp', '/setwarp {warpname} {password}') do |me, *args|
+    public_player_command('setwarp', 'Creates a new warp', '/setwarp {warpname} {password}') do |me, *args|
       if args[0] != nil then
         location = me.location.to_a
         location_hash = {}
@@ -70,7 +70,7 @@ class PuruginEssentials
       end
     end
     
-    public_command('delwarp', 'Deletes a warp', '/delwarp {warpname} {password}') do |me, *args|
+    public_player_command('delwarp', 'Deletes a warp', '/delwarp {warpname} {password}') do |me, *args|
       if args[0] != nil then
         if @warps_hash[args[0]] != nil then
           if @warps_hash[args[0]][:pass] == args[1] or @warps_hash[args[0]][:pass] == nil then
@@ -88,7 +88,7 @@ class PuruginEssentials
       end
     end
     
-    public_command('warp', 'Warp to a certain location', '/warp {warpname} {password}') do |me, *args|
+    public_player_command('warp', 'Warp to a certain location', '/warp {warpname} {password}') do |me, *args|
       if args[0] != nil then
         warp = @warps_hash[args[0]]
         if warp != nil then
@@ -107,7 +107,7 @@ class PuruginEssentials
       end
     end
     
-    public_command('listwarps', 'Lists the existing warps', '/listwarps') do |me, *|
+    public_player_command('listwarps', 'Lists the existing warps', '/listwarps') do |me, *|
       me.msg(@warps_hash.keys.inspect)
     end
     
